@@ -255,4 +255,9 @@ Public Class frmQuestions
         narc = Math.Max(0, Math.Min(100, narc))
         psych = Math.Max(0, Math.Min(100, psych))
     End Sub
+
+    Protected Overrides Sub OnFormClosing(e As FormClosingEventArgs)
+        MyBase.OnFormClosing(e)
+        Application.Exit()
+    End Sub
 End Class

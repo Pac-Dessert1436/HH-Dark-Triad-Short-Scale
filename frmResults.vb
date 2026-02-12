@@ -184,14 +184,14 @@ Public Class frmResults
         Next
 
         ' Draw data polygon
-        Dim points As New List(Of PointF)()
+        Dim points As New List(Of PointF)
         For i As Integer = 0 To 3
             Dim angle As Double = (Math.PI * 2 * i) / 4 - Math.PI / 2
             Dim value As Single = scores(i) / 100.0F
             Dim x As Single = centerX + CSng(Math.Cos(angle)) * radius * value
             Dim y As Single = centerY + CSng(Math.Sin(angle)) * radius * value
             points.Add(New PointF(x, y))
-        Next
+        Next i
 
         ' Fill polygon
         Using fillBrush As New SolidBrush(Color.FromArgb(168, 85, 247, 80))
@@ -230,8 +230,11 @@ Public Class frmResults
 
     Private Sub PrintResults(sender As Object, e As EventArgs)
         PrintDialog1.Document = PrintDocument1
-        If PrintDialog1.ShowDialog() = DialogResult.OK Then
-            PrintDocument1.Print()
-        End If
+        If PrintDialog1.ShowDialog() = DialogResult.OK Then PrintDocument1.Print()
+    End Sub
+
+    Protected Overrides Sub OnFormClosing(e As FormClosingEventArgs)
+        MyBase.OnFormClosing(e)
+        Application.Exit()
     End Sub
 End Class

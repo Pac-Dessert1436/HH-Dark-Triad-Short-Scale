@@ -17,7 +17,7 @@ The Honesty-Humility & Dark Triad Short Scale is a VB.NET WinForms desktop appli
 - **Narcissism**: Measures self-admiration, feelings of superiority, and the desire for power and admiration
 - **Psychopathy**: Gauges emotional detachment, fearlessness, and lack of empathy
 
-The application offers an intuitive user interface for completing the assessment, with real-time progress tracking and detailed results visualization—including radar charts and dimension-specific score breakdowns.
+The application offers an intuitive user interface for completing the assessment, with real-time progress tracking and detailed results visualization - including radar charts and dimension-specific score breakdowns.
 
 ## Features
 
@@ -33,7 +33,7 @@ The application offers an intuitive user interface for completing the assessment
 - **VB.NET WinForms Framework**: Modern, user-friendly Windows desktop interface
 - **Strict Data Validation**: Ensures all 40 questions are completed before submission
 - **Robust Error Handling**: Comprehensive error management for a seamless user experience
-- **Local-Only Processing**: All results are calculated and displayed locally—no data is transmitted externally
+- **Local-Only Processing**: All results are calculated and displayed locally - no data is transmitted externally
 
 ## Installation
 
@@ -79,9 +79,9 @@ The application offers an intuitive user interface for completing the assessment
 ## Technical Details
 
 ### Project Structure
-- `frmMain.vb`: Main form containing the full assessment interface and core logic
-- `english.html`: English-language version of assessment content (reference document)
-- `original.html`: Original Chinese-language version of assessment content (reference document)
+- `frmMain.vb`: Main form containing the introduction and navigation to the assessment
+- `frmQuestions.vb`: Questions form containing the full assessment interface and core logic
+- `frmResults.vb`: Results form displaying the final assessment profile and score breakdown
 - `LICENSE`: BSD 3-Clause License file
 - `README.md`: Project documentation (this file)
 

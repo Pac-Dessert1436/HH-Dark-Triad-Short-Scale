@@ -9,7 +9,7 @@ Public Class frmMain
         MinimumSize = New Size(1000, 700)
         MaximumSize = New Size(1200, 900)
 
-        ' Add event handlers
+        ' Set description label text
         lblDescription.Text = "Explore the Honesty-Humility and Dark Triad traits in your personality spectrum
 
 This assessment contains 40 questions divided into four dimensions:
@@ -33,7 +33,7 @@ This assessment contains 40 questions divided into four dimensions:
     Private Sub OnTestCompleted(answers As Dictionary(Of Integer, Integer))
         ' Create and show results form
         If resultsForm Is Nothing OrElse resultsForm.IsDisposed Then
-            resultsForm = New frmResults()
+            resultsForm = New frmResults
             AddHandler resultsForm.RetakeTest, AddressOf OnRetakeTest
         End If
 
@@ -56,12 +56,23 @@ This assessment contains 40 questions divided into four dimensions:
             questForm.StartTest()
             questForm.Show()
         Else
-            questForm = New frmQuestions()
+            questForm = New frmQuestions
             AddHandler questForm.TestCompleted, AddressOf OnTestCompleted
             AddHandler questForm.BackToMain, AddressOf OnBackToMain
             questForm.StartTest()
             questForm.Show()
         End If
+    End Sub
+
+    Protected Overrides Sub OnFormClosing(e As FormClosingEventArgs)
+        If questForm IsNot Nothing Then
+            RemoveHandler questForm.TestCompleted, AddressOf OnTestCompleted
+            RemoveHandler questForm.BackToMain, AddressOf OnBackToMain
+        End If
+        If resultsForm IsNot Nothing Then
+            RemoveHandler resultsForm.RetakeTest, AddressOf OnRetakeTest
+        End If
+        MyBase.OnFormClosing(e)
     End Sub
 
     Friend Shared Sub Main()
